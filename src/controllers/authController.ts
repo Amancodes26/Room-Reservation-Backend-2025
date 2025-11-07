@@ -15,6 +15,8 @@ import crypto from 'crypto';
  * @desc    Register a new user
  * @route   POST /api/auth/register
  * @access  Public
+ * @note    Regular users can only register with 'user' role.
+ *          Admin role can only be assigned by existing admins or through environment variable.
  */
 export const register = asyncHandler(
   async (req: Request, res: Response): Promise<void> => {
@@ -26,12 +28,30 @@ export const register = asyncHandler(
       throw new ConflictError('User with this email already exists');
     }
 
-    // Create user
+    // Security: Prevent self-registration as admin
+    // Admin role can only be assigned if:
+    // 1. No users exist yet (first user becomes admin)
+    // 2. Request is authenticated and user is already an admin
+    const userCount = await User.countDocuments();
+    let assignedRole = UserRole.USER; // Default to regular user
+
+    if (userCount === 0) {
+      // First user in the system automatically becomes admin
+      assignedRole = UserRole.ADMIN;
+      console.log('🔐 First user registered - automatically assigned admin role');
+    } else if (role === UserRole.ADMIN) {
+      // Security: Trying to register as admin when users already exist
+      throw new BadRequestError(
+        'Admin role cannot be self-assigned. Please contact an existing administrator.'
+      );
+    }
+
+    // Create user with assigned role
     const user = await User.create({
       name,
       email,
       password,
-      role: role || UserRole.USER,
+      role: assignedRole,
     });
 
     // Generate tokens

@@ -20,7 +20,9 @@ export const registerSchema = Joi.object({
         'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
       'any.required': 'Password is required',
     }),
-  role: Joi.string().valid('user', 'admin').optional(),
+  // Role field removed - controlled by system logic
+  // First user = admin, subsequent users = regular users
+  // Admins can promote users via PATCH /api/users/:id/promote
 });
 
 export const loginSchema = Joi.object({

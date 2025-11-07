@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { User } from '../models/User.js';
+import { User, UserRole } from '../models/User.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { NotFoundError, BadRequestError } from '../utils/ApiError.js';
@@ -186,5 +186,70 @@ export const activateUser = asyncHandler(
     }
 
     res.json(ApiResponse.success('User activated successfully', user));
+  }
+);
+
+/**
+ * @desc    Promote user to admin role
+ * @route   PATCH /api/users/:id/promote
+ * @access  Private/Admin
+ */
+export const promoteToAdmin = asyncHandler(
+  async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+
+    if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+      throw new BadRequestError('Invalid user ID');
+    }
+
+    const user = await User.findById(id).select('-password');
+
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
+
+    if (user.role === UserRole.ADMIN) {
+      throw new BadRequestError('User is already an admin');
+    }
+
+    user.role = UserRole.ADMIN;
+    await user.save();
+
+    res.json(ApiResponse.success('User promoted to admin successfully', user));
+  }
+);
+
+/**
+ * @desc    Demote admin to regular user role
+ * @route   PATCH /api/users/:id/demote
+ * @access  Private/Admin
+ */
+export const demoteToUser = asyncHandler(
+  async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+
+    if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+      throw new BadRequestError('Invalid user ID');
+    }
+
+    const user = await User.findById(id).select('-password');
+
+    if (!user) {
+      throw new NotFoundError('User not found');
+    }
+
+    if (user.role === UserRole.USER) {
+      throw new BadRequestError('User is already a regular user');
+    }
+
+    // Prevent demoting yourself
+    if (req.user?.userId === id) {
+      throw new BadRequestError('You cannot demote yourself');
+    }
+
+    user.role = UserRole.USER;
+    await user.save();
+
+    res.json(ApiResponse.success('User demoted to regular user successfully', user));
   }
 );

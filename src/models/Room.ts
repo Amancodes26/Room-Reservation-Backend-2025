@@ -33,7 +33,6 @@ const roomSchema = new Schema<IRoom>(
     name: {
       type: String,
       required: [true, 'Room name is required'],
-      unique: true,
       trim: true,
       minlength: [2, 'Room name must be at least 2 characters'],
       maxlength: [100, 'Room name cannot exceed 100 characters'],
@@ -87,7 +86,7 @@ const roomSchema = new Schema<IRoom>(
 );
 
 // Indexes for better query performance
-roomSchema.index({ name: 1 });
+roomSchema.index({ name: 1 }, { unique: true }); // Single unique index instead of duplicate
 roomSchema.index({ capacity: 1 });
 roomSchema.index({ pricePerHour: 1 });
 roomSchema.index({ isActive: 1 });
