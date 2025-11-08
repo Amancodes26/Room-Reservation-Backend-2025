@@ -6,15 +6,15 @@ import {
   updateRoom,
   deleteRoom,
   getRoomAvailability,
-} from '../controllers/roomController.js';
-import { authenticate } from '../middlewares/auth.js';
-import { authorize } from '../middlewares/authorize.js';
-import { UserRole } from '../models/User.js';
-import { validate } from '../middlewares/validate.js';
+} from '../controllers/roomController';
+import { authenticate } from '../middlewares/auth';
+import { authorize } from '../middlewares/authorize';
+import { UserRole } from '../models/User';
+import { validate } from '../middlewares/validate';
 import {
   createRoomSchema,
   updateRoomSchema,
-} from '../middlewares/validators/roomValidation.js';
+} from '../middlewares/validators/roomValidation';
 
 const router = Router();
 

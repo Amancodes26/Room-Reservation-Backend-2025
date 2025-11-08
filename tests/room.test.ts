@@ -1,8 +1,8 @@
 import request from 'supertest';
-import app from '../src/app.js';
-import { User, UserRole } from '../src/models/User.js';
-import { Room } from '../src/models/Room.js';
-import { generateTokens } from '../src/utils/jwt.js';
+import app from '../src/app';
+import { User, UserRole } from '../src/models/User';
+import { Room } from '../src/models/Room';
+import { generateTokens } from '../src/utils/jwt';
 
 describe('Room Controller', () => {
   let adminToken: string;

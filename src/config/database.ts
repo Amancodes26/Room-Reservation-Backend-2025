@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { env } from './env.js';
+import { env } from './env';
 
 export const connectDB = async (): Promise<void> => {
   try {
@@ -23,7 +23,7 @@ export const connectDB = async (): Promise<void> => {
     });
     
     mongoose.connection.on('disconnected', () => {
-      console.log('⚠️  MongoDB disconnected');
+      console.log('MongoDB disconnected');
     });
     
     // Graceful shutdown

@@ -1,6 +1,13 @@
+/**
+ * Authorization Middleware
+ * Checks user roles to authorize access to specific routes
+ * Ensures that only users with appropriate roles can access certain resources
+ */
+
+
 import type { Request, Response, NextFunction } from 'express';
-import { ForbiddenError, UnauthorizedError } from '../utils/ApiError.js';
-import { UserRole } from '../models/User.js';
+import { ForbiddenError, UnauthorizedError } from '../utils/ApiError';
+import { UserRole } from '../models/User';
 
 /**
  * Authorize based on user roles

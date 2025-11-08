@@ -3,14 +3,14 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
-import { env } from './config/env.js';
-import { errorHandler } from './middlewares/errorHandler.js';
+import { env } from './config/env';
+import { errorHandler } from './middlewares/errorHandler';
 
 // Import routes
-import authRoutes from './routes/authRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-import roomRoutes from './routes/roomRoutes.js';
-import reservationRoutes from './routes/reservationRoutes.js';
+import authRoutes from './routes/authRoutes';
+import userRoutes from './routes/userRoutes';
+import roomRoutes from './routes/roomRoutes';
+import reservationRoutes from './routes/reservationRoutes';
 
 const app: Express = express();
 

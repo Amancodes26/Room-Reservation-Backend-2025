@@ -1,10 +1,18 @@
+/** Room Controller
+ * handles room creation, retrieval, updating, and deletion
+ * provides room availability information
+ * supports filtering and pagination for room listings
+*/
+
+
+
 import type { Request, Response } from 'express';
-import { Room } from '../models/Room.js';
-import { Reservation, ReservationStatus } from '../models/Reservation.js';
-import { asyncHandler } from '../utils/asyncHandler.js';
-import { ApiResponse } from '../utils/ApiResponse.js';
-import { NotFoundError, BadRequestError } from '../utils/ApiError.js';
-import { parsePagination, createPaginationMeta } from '../utils/pagination.js';
+import { Room } from '../models/Room';
+import { Reservation, ReservationStatus } from '../models/Reservation';
+import { asyncHandler } from '../utils/asyncHandler';
+import { ApiResponse } from '../utils/ApiResponse';
+import { NotFoundError, BadRequestError } from '../utils/ApiError';
+import { parsePagination, createPaginationMeta } from '../utils/pagination';
 import mongoose from 'mongoose';
 
 /**

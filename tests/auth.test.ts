@@ -1,7 +1,7 @@
 import request from 'supertest';
-import app from '../src/app.js';
-import { User, UserRole } from '../src/models/User.js';
-import { generateTokens } from '../src/utils/jwt.js';
+import app from '../src/app';
+import { User, UserRole } from '../src/models/User';
+import { generateTokens } from '../src/utils/jwt';
 import crypto from 'crypto';
 
 describe('Auth Controller', () => {

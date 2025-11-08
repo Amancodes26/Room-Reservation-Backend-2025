@@ -1,9 +1,18 @@
+/** User Controller
+ * handles user management including retrieval, updating, and deletion
+ * supports admin functionalities for user role management
+ * provides filtering and pagination for user listings
+*/
+
+
+
+
 import type { Request, Response } from 'express';
-import { User, UserRole } from '../models/User.js';
-import { asyncHandler } from '../utils/asyncHandler.js';
-import { ApiResponse } from '../utils/ApiResponse.js';
-import { NotFoundError, BadRequestError } from '../utils/ApiError.js';
-import { parsePagination, createPaginationMeta } from '../utils/pagination.js';
+import { User, UserRole } from '../models/User';
+import { asyncHandler } from '../utils/asyncHandler';
+import { ApiResponse } from '../utils/ApiResponse';
+import { NotFoundError, BadRequestError } from '../utils/ApiError';
+import { parsePagination, createPaginationMeta } from '../utils/pagination';
 import mongoose from 'mongoose';
 
 /**

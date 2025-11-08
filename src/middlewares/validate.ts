@@ -1,6 +1,12 @@
+/** Validation Middleware
+ * Validates incoming request data against a Joi schema
+ * Ensures data integrity and prevents malformed requests
+ */
+
+
 import type { Request, Response, NextFunction } from 'express';
 import type { ObjectSchema } from 'joi';
-import { ValidationError } from '../utils/ApiError.js';
+import { ValidationError } from '../utils/ApiError';
 
 /**
  * Validate request data using Joi schema

@@ -6,15 +6,15 @@ import {
   updateReservation,
   cancelReservation,
   getMyReservations,
-} from '../controllers/reservationController.js';
-import { authenticate } from '../middlewares/auth.js';
-import { authorize } from '../middlewares/authorize.js';
-import { UserRole } from '../models/User.js';
-import { validate } from '../middlewares/validate.js';
+} from '../controllers/reservationController';
+import { authenticate } from '../middlewares/auth';
+import { authorize } from '../middlewares/authorize';
+import { UserRole } from '../models/User';
+import { validate } from '../middlewares/validate';
 import {
   createReservationSchema,
   updateReservationSchema,
-} from '../middlewares/validators/reservationValidation.js';
+} from '../middlewares/validators/reservationValidation';
 
 const router = Router();
 

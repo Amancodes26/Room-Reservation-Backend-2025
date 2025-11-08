@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { connectDB } from '../src/config/database.js';
+import { connectDB } from '../src/config/database';
 
 describe('Database Connection', () => {
   it('should connect to MongoDB successfully', async () => {

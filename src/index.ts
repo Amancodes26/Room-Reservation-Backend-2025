@@ -1,6 +1,6 @@
-import app from './app.js';
-import { connectDB } from './config/database.js';
-import { env } from './config/env.js';
+import app from './app';
+import { connectDB } from './config/database';
+import { env } from './config/env';
 
 /**
  * Start the server

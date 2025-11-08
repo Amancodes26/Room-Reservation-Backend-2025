@@ -1,6 +1,13 @@
+/** Global Error Handler Middleware
+ * Catches and processes errors from the application
+ * Differentiates between operational and programming errors
+ * Provides detailed error responses in development mode
+ */
+
+
 import type { Request, Response, NextFunction } from 'express';
-import { ApiError } from '../utils/ApiError.js';
-import { env } from '../config/env.js';
+import { ApiError } from '../utils/ApiError';
+import { env } from '../config/env';
 
 /**
  * Global error handler middleware

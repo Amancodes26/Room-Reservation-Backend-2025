@@ -5,8 +5,8 @@
     "outDir": "./dist",
 
     /* === Environment === */
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "target": "ES2022",
     "lib": ["ESNext"],
     "types": ["node", "jest"],
@@ -25,7 +25,7 @@
     "allowSyntheticDefaultImports": true,
 
     /* === Module Rules === */
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noUncheckedSideEffectImports": true,

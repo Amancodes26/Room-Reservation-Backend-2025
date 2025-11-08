@@ -6,16 +6,16 @@ import {
   getMe,
   requestPasswordReset,
   resetPassword,
-} from '../controllers/authController.js';
-import { authenticate } from '../middlewares/auth.js';
-import { validate } from '../middlewares/validate.js';
+} from '../controllers/authController';
+import { authenticate } from '../middlewares/auth';
+import { validate } from '../middlewares/validate';
 import {
   registerSchema,
   loginSchema,
   refreshTokenSchema,
   resetPasswordRequestSchema,
   resetPasswordSchema,
-} from '../middlewares/validators/authValidation.js';
+} from '../middlewares/validators/authValidation';
 
 const router = Router();
 

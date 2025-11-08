@@ -1,7 +1,14 @@
+/**
+ * Authentication Middleware
+ * Verifies JWT tokens and attaches user information to the request
+ * Ensures that only authenticated users can access protected routes
+ */
+
+
 import type { Request, Response, NextFunction } from 'express';
-import { verifyAccessToken } from '../utils/jwt.js';
-import { UnauthorizedError } from '../utils/ApiError.js';
-import { User } from '../models/User.js';
+import { verifyAccessToken } from '../utils/jwt';
+import { UnauthorizedError } from '../utils/ApiError';
+import { User } from '../models/User';
 
 // Extend Express Request interface to include user
 declare global {

@@ -1,14 +1,22 @@
+/** Auth Controller 
+ * authentication and authorization logic
+ * handles user registration, login, token refresh, and profile retrieval
+ * also manages password reset requests and updates
+ * ensures security best practices, such as preventing self-registration as admin
+*/
+
+
 import type { Request, Response } from 'express';
-import { User, UserRole } from '../models/User.js';
-import { generateTokens, verifyRefreshToken } from '../utils/jwt.js';
-import { asyncHandler } from '../utils/asyncHandler.js';
-import { ApiResponse } from '../utils/ApiResponse.js';
+import { User, UserRole } from '../models/User';
+import { generateTokens, verifyRefreshToken } from '../utils/jwt';
+import { asyncHandler } from '../utils/asyncHandler';
+import { ApiResponse } from '../utils/ApiResponse';
 import {
   BadRequestError,
   UnauthorizedError,
   NotFoundError,
   ConflictError,
-} from '../utils/ApiError.js';
+} from '../utils/ApiError';
 import crypto from 'crypto';
 
 /**

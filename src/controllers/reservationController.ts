@@ -1,17 +1,25 @@
+/** Reservation Controller
+ * handles reservation creation, retrieval, updating, and cancellation
+ * ensures room availability and enforces business rules
+ * provides pagination and filtering for reservation listings
+*/
+
+
+
 import type { Request, Response } from 'express';
-import { Reservation, ReservationStatus } from '../models/Reservation.js';
-import { Room } from '../models/Room.js';
-import { asyncHandler } from '../utils/asyncHandler.js';
-import { ApiResponse } from '../utils/ApiResponse.js';
+import { Reservation, ReservationStatus } from '../models/Reservation';
+import { Room } from '../models/Room';
+import { asyncHandler } from '../utils/asyncHandler';
+import { ApiResponse } from '../utils/ApiResponse';
 import {
   NotFoundError,
   BadRequestError,
   ForbiddenError,
   ConflictError,
-} from '../utils/ApiError.js';
-import { parsePagination, createPaginationMeta } from '../utils/pagination.js';
+} from '../utils/ApiError';
+import { parsePagination, createPaginationMeta } from '../utils/pagination';
 import mongoose from 'mongoose';
-import { UserRole } from '../models/User.js';
+import { UserRole } from '../models/User';
 
 /**
  * Calculate total price based on room price and duration

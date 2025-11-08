@@ -4,16 +4,16 @@ import {
   getUserById,
   updateUser,
   deleteUser,
-  deactivateUser,
   activateUser,
+  deactivateUser,
   promoteToAdmin,
   demoteToUser,
-} from '../controllers/userController.js';
-import { authenticate } from '../middlewares/auth.js';
-import { authorize } from '../middlewares/authorize.js';
-import { UserRole } from '../models/User.js';
-import { validate } from '../middlewares/validate.js';
-import { updateUserSchema } from '../middlewares/validators/authValidation.js';
+} from '../controllers/userController';
+import { authenticate } from '../middlewares/auth';
+import { authorize } from '../middlewares/authorize';
+import { UserRole } from '../models/User';
+import { validate } from '../middlewares/validate';
+import { updateUserSchema } from '../middlewares/validators/authValidation';
 
 const router = Router();
 
