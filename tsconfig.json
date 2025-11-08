@@ -5,8 +5,8 @@
     "outDir": "./dist",
 
     /* === Environment === */
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "target": "ES2022",
     "lib": ["ESNext"],
     "types": ["node", "jest"],
